@@ -8,14 +8,21 @@ import sqlite3
 from difflib import SequenceMatcher
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 CSV_FOLDER = os.path.join(BASE_DIR)
-from igmeter.elenabravoarche import ejecutarMeter as meter
+from igmeter.InstaMeter import *
+
 
 # Just reads the results out of the dictionary. No real logic here.
 
 def index(request):
+    im = InstaMeter(username='elenabravoarche')
+    res = im.analyze_profile()
 
-    ordenado = meter()
-    context = {'lista': ordenado}
+    listaResultado = []
+    listaResultado.append(im.print_account_statistic())
+    listaResultado.append(im.print_top_liked())
+    listaResultado.append(im.print_top_commented())
+    listaResultado.append(im.print_top_viewed())
+    context = {'lista': listaResultado}
     return render(request, 'igmeter/index.html',context)
 # Create your views here.
 
