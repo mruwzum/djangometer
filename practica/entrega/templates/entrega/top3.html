@@ -1,0 +1,20 @@
+{% block comeback %}
+    <h2> <li><a href='/'>Volver al menú </a></li> </h2>
+{% endblock comeback %}
+
+
+{% block top3 %}
+    <h1>Top 3 noticias del día</h1>
+<br>    
+    {% for elem in lista %}
+        <h4> Titular: {{elem.0}}</h4>
+        Numero de comentarios: {{elem.2}}
+        Fecha: {{elem.3}}
+        <p><a href={{elem.1}}>Enlace al diario</a></p>
+        <a href="/recomiendaId/{{elem.4}}">Noticias relacionadas</a>
+        <br>     
+
+        <p> ______________________________________________________________________________________________________________________________ </p>
+    {% endfor %}
+  
+{% endblock top3 %}

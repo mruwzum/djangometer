@@ -1,0 +1,208 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<scenario xmlns="http://www.omnigroup.com/namespace/OmniPlan/v2" xmlns:opns="http://www.omnigroup.com/namespace/OmniPlan/v2" id="h7BB1JMawSv">
+  <start-date>2018-12-21T07:00:00.000Z</start-date>
+  <granularity>hours</granularity>
+  <named-styles-proxy>
+    <named-style-proxy name="Estilo nuevo" id="bqZgfzlvsXd"/>
+  </named-styles-proxy>
+  <prototype-task>
+    <task id="t-2">
+      <title>Tarea 1</title>
+      <effort>28800</effort>
+    </task>
+  </prototype-task>
+  <prototype-task>
+    <task id="t-3">
+      <title>Fecha clave 1</title>
+      <type>milestone</type>
+    </task>
+  </prototype-task>
+  <prototype-task>
+    <task id="t-4">
+      <title>Grupo 1</title>
+      <type>group</type>
+    </task>
+  </prototype-task>
+  <prototype-resource>
+    <resource id="r-2">
+      <name>Recurso 1</name>
+      <type>Staff</type>
+    </resource>
+  </prototype-resource>
+  <prototype-resource>
+    <resource id="r-3">
+      <name>Equipo 1</name>
+      <type>Equipment</type>
+    </resource>
+  </prototype-resource>
+  <prototype-resource>
+    <resource id="r-4">
+      <name>Material 1</name>
+      <type>Material</type>
+      <units-available>0</units-available>
+      <efficiency>0</efficiency>
+    </resource>
+  </prototype-resource>
+  <prototype-resource>
+    <resource id="r-5">
+      <name>Grupo 1</name>
+      <type>Group</type>
+    </resource>
+  </prototype-resource>
+  <top-resource idref="r-1"/>
+  <resource id="r-1">
+    <name/>
+    <type>Group</type>
+    <child-resource idref="r2"/>
+    <child-resource idref="r3"/>
+    <child-resource idref="r4"/>
+  </resource>
+  <resource id="r2">
+    <name>Cristian Rodríguez</name>
+    <type>Staff</type>
+  </resource>
+  <resource id="r3">
+    <name>David de la Torre</name>
+    <type>Staff</type>
+  </resource>
+  <resource id="r4">
+    <name>Miguel Ángel Antolín</name>
+    <type>Staff</type>
+  </resource>
+  <top-task idref="t-1"/>
+  <task id="t-1">
+    <type>group</type>
+    <child-task idref="t19"/>
+    <child-task idref="t16"/>
+    <child-task idref="t17"/>
+    <child-task idref="t20"/>
+    <child-task idref="t18"/>
+    <child-task idref="t21"/>
+    <child-task idref="t22"/>
+    <child-task idref="t23"/>
+    <child-task idref="t24"/>
+    <child-task idref="t25"/>
+    <child-task idref="t26"/>
+    <child-task idref="t27"/>
+    <child-task idref="t28"/>
+  </task>
+  <task id="t16">
+    <title>Scrapping EL CONFIDENCIAL</title>
+    <effort>28800</effort>
+    <effort-done>28800</effort-done>
+    <start-constraint-date>2018-12-27T07:15:00.000Z</start-constraint-date>
+    <prerequisite-task idref="t19"/>
+    <assignment idref="r2"/>
+    <start-no-earlier-than>2018-12-27T07:15:00.000Z</start-no-earlier-than>
+  </task>
+  <task id="t17">
+    <title>Scrapping EL MUNDO</title>
+    <effort>28800</effort>
+    <effort-done>28800</effort-done>
+    <start-constraint-date>2018-12-27T07:15:00.000Z</start-constraint-date>
+    <prerequisite-task idref="t16" kind="SS"/>
+    <assignment idref="r3"/>
+    <start-no-earlier-than>2018-12-27T07:15:00.000Z</start-no-earlier-than>
+  </task>
+  <task id="t18">
+    <title>Archivo de populate_database</title>
+    <effort>28800</effort>
+    <effort-done>28800</effort-done>
+    <start-constraint-date>2019-01-01T07:15:00.000Z</start-constraint-date>
+    <prerequisite-task idref="t20"/>
+    <assignment idref="r3"/>
+    <start-no-earlier-than>2019-01-01T07:15:00.000Z</start-no-earlier-than>
+  </task>
+  <task id="t19">
+    <title>Crear proyecto base</title>
+    <effort>28800</effort>
+    <effort-done>28800</effort-done>
+    <start-constraint-date>2018-12-25T15:45:00.000Z</start-constraint-date>
+    <assignment idref="r2"/>
+    <start-no-earlier-than>2018-12-25T15:45:00.000Z</start-no-earlier-than>
+  </task>
+  <task id="t20">
+    <title>Scrapping EL PAIS</title>
+    <effort>28800</effort>
+    <effort-done>28800</effort-done>
+    <start-constraint-date>2018-12-27T07:15:00.000Z</start-constraint-date>
+    <prerequisite-task idref="t17" kind="SS"/>
+    <assignment idref="r4"/>
+    <start-no-earlier-than>2018-12-27T07:15:00.000Z</start-no-earlier-than>
+  </task>
+  <task id="t21">
+    <title>Vista para cargar las noticas en el sistema de base de datos</title>
+    <effort>28800</effort>
+    <effort-done>28800</effort-done>
+    <start-constraint-date>2019-01-03T07:30:00.000Z</start-constraint-date>
+    <prerequisite-task idref="t18"/>
+    <assignment idref="r2"/>
+    <start-no-earlier-than>2019-01-03T07:30:00.000Z</start-no-earlier-than>
+  </task>
+  <task id="t22">
+    <title>Listado de noticias</title>
+    <effort>28800</effort>
+    <effort-done>28800</effort-done>
+    <start-constraint-date>2019-01-04T07:15:00.000Z</start-constraint-date>
+    <prerequisite-task idref="t21"/>
+    <assignment idref="r4"/>
+    <start-no-earlier-than>2019-01-04T07:15:00.000Z</start-no-earlier-than>
+  </task>
+  <task id="t23">
+    <title>TOP-3 noticias</title>
+    <effort>28800</effort>
+    <effort-done>28800</effort-done>
+    <start-constraint-date>2019-01-08T07:00:00.000Z</start-constraint-date>
+    <prerequisite-task idref="t22"/>
+    <assignment idref="r3"/>
+    <start-no-earlier-than>2019-01-08T07:00:00.000Z</start-no-earlier-than>
+  </task>
+  <task id="t24">
+    <title>Buscador de noticas</title>
+    <effort>28800</effort>
+    <effort-done>28800</effort-done>
+    <start-constraint-date>2019-01-08T07:00:00.000Z</start-constraint-date>
+    <prerequisite-task idref="t23" kind="SS"/>
+    <assignment idref="r2"/>
+    <start-no-earlier-than>2019-01-08T07:00:00.000Z</start-no-earlier-than>
+  </task>
+  <task id="t25">
+    <title>Sistema de recomendacion basado en contenido de noticias</title>
+    <effort>28800</effort>
+    <effort-done>28800</effort-done>
+    <start-constraint-date>2019-01-09T07:15:00.000Z</start-constraint-date>
+    <prerequisite-task idref="t24"/>
+    <assignment idref="r4"/>
+    <start-no-earlier-than>2019-01-09T07:15:00.000Z</start-no-earlier-than>
+  </task>
+  <task id="t26">
+    <title>Vista de recomendación de películas dado peliculaId</title>
+    <effort>28800</effort>
+    <effort-done>28800</effort-done>
+    <start-constraint-date>2019-01-11T07:00:00.000Z</start-constraint-date>
+    <prerequisite-task idref="t25"/>
+    <assignment idref="r3"/>
+    <start-no-earlier-than>2019-01-11T07:00:00.000Z</start-no-earlier-than>
+  </task>
+  <task id="t27">
+    <title>Documentación</title>
+    <effort>28800</effort>
+    <effort-done>28800</effort-done>
+    <start-constraint-date>2019-01-10T15:45:00.000Z</start-constraint-date>
+    <prerequisite-task idref="t26" kind="SS"/>
+    <assignment idref="r4"/>
+    <start-no-earlier-than>2019-01-10T15:45:00.000Z</start-no-earlier-than>
+  </task>
+  <task id="t28">
+    <title>Presentación</title>
+    <effort>28800</effort>
+    <effort-done>28800</effort-done>
+    <start-constraint-date>2019-01-11T07:00:00.000Z</start-constraint-date>
+    <prerequisite-task idref="t27" kind="SS"/>
+    <assignment idref="r2"/>
+    <start-no-earlier-than>2019-01-11T07:00:00.000Z</start-no-earlier-than>
+  </task>
+  <critical-path root="-1" enabled="true" resources="false">
+    <color space="srgb" r="1" g="0.5" b="0.5"/>
+  </critical-path>
+</scenario>
