@@ -242,10 +242,15 @@ class InstaMeter:
 
     def __check_user_before_print(self):
         if not self.user:
-            print('User was not analyzed because of: "{}"'.format(self.__error))
+            listaResultado = []
+            listaResultado.append('User was not analyzed because of: "{}"'.format(self.__error)+'\n')
+            #print('User was not analyzed because of: "{}"'.format(self.__error))
+            return listaResultado
+            #TODO: mirar este exit
             exit()
 
     def print_account_statistic(self):
+        listaResultado=[]
         workbook = xlsxwriter.Workbook('Statistics_of_@'+format(self.user['un'])+'.xlsx')
         worksheet = workbook.add_worksheet()
         col = 0
@@ -263,19 +268,34 @@ class InstaMeter:
             'likes/post': self.user[COUNTERS_KEY][COUNT_KEY_LIKES_PER_POST],
             '#video_views': self.user[COUNTERS_KEY][COUNT_KEY_VIDEO_VIEWS],  
         }
-        print('+-- https://instagram.com/{:-<37}+'.format(self.user['un'] + '/ '))
-        print('|   {:<27}|{:^31}|'.format('counter', 'value'))
-        print('+{:-^30}+{:-^31}+'.format('', ''))
+        listaResultado.append('+-- https://instagram.com/{:-<37}+'.format(self.user['un'] + '/ '))
+ 
+
+        # listaResultado.append("")
+        # listaResultado.append('|   {:<27}|{:^31}|'.format('counter', 'value'))
+        # listaResultado.append("")
+        # listaResultado.append('+{:-^30}+{:-^31}+'.format('', ''))
+        # listaResultado.append("")
+        # print('+-- https://instagram.com/{:-<37}+'.format(self.user['un'] + '/ '))
+        # print('|   {:<27}|{:^31}|'.format('counter', 'value'))
+        # print('+{:-^30}+{:-^31}+'.format('', ''))
         for key, value in stats.items():
-            print('|   {:<27}|{:^31}|'.format(key, value))
+            listaResultado.append('|   {:<27}: {:^31}|'.format(key, value))
+            listaResultado.append(" * ")
+
+            #print('|   {:<27}|{:^31}|'.format(key, value))
             worksheet.write(row, col,     key)
             worksheet.write(row, col + 1, value)
             row += 1
-        print('|{: ^62}|'.format(''))
+        #print('|{: ^62}|'.format(''))
+        # listaResultado.append('|{: ^62}|'.format(''))
+ 
+
         # worksheet.write(row, 0, 'Total')
         # worksheet.write(row, 1, '=SUM(B1:B4)')
         workbook.worksheets_objs.sort(key=lambda x: x.name)
         workbook.close()
+        return listaResultado
     def __print_top(self, posts, header_text, key, counter_text):
         self.__check_user_before_print()
         if not self.user['ip']:
@@ -303,13 +323,25 @@ class InstaMeter:
 
     @staticmethod
     def __print_top_header(text):
-        print('+{:-^62}+'.format('', ''))
-        print('|{:^62}|'.format(text))
-        print('+{:-^62}+'.format('', ''))
+       
+        listaResultado = []
+        # listaResultado.append('+{:-^62}+'.format('', '')) 
+        # listaResultado.append('|{:^62}|'.format(text))
+        # listaResultado.append('+{:-^62}+'.format('', ''))
+
+        listaResultado.append(text)
+ 
+        return listaResultado
 
     @staticmethod
     def __print_top_rest(posts, text, key):
+        listaResultado = []
         for post in posts:
             print_text = 'https://instagram.com/p/{}/ - {} {}'.format(post['code'], post[key], text)
-            print('|{:^62}|'.format(print_text))
-        print('+{:-^62}+'.format('', ''))
+            
+            listaResultado.append(print_text)
+     
+            #print('|{:^62}|'.format(print_text))
+        #print('+{:-^62}+'.format('', ''))
+ 
+        return listaResultado
