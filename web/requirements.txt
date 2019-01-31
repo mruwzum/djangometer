@@ -4,6 +4,8 @@ django-cors-headers==2.1.0
 django-filter==1.1.0
 lxml==4.2.5
 numpy==1.15.2
+django-heroku
+gunicorn
 urllib3==1.22
 XlsxWriter==1.1.2
 requests==2.21.0
