@@ -280,7 +280,8 @@ class InstaMeter:
         # print('|   {:<27}|{:^31}|'.format('counter', 'value'))
         # print('+{:-^30}+{:-^31}+'.format('', ''))
         for key, value in stats.items():
-            listaResultado.append('   {:<27}: {:^31}'.format(key, value))
+            
+            listaResultado.append('   {:<27} {:^31}'.format("", value))
             #listaResultado.append(" * ")
 
             #print('|   {:<27}|{:^31}|'.format(key, value))

@@ -15,14 +15,12 @@ from igmeter.InstaMeter import *
 
 def index(request):
     im = InstaMeter(username='elenabravoarche')
-    res = im.analyze_profile()
+    im.analyze_profile()
 
-    listaResultado = []
-    listaResultado.append(im.print_account_statistic())
     # listaResultado.append(im.print_top_liked())
     # listaResultado.append(im.print_top_commented())
     # listaResultado.append(im.print_top_viewed())
-    context = {'lista': listaResultado}
+    context = {'res': im.print_account_statistic()}
     return render(request, 'igmeter/index.html',context)
 # Create your views here.
 
