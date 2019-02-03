@@ -268,7 +268,7 @@ class InstaMeter:
             'likes/post': self.user[COUNTERS_KEY][COUNT_KEY_LIKES_PER_POST],
             '#video_views': self.user[COUNTERS_KEY][COUNT_KEY_VIDEO_VIEWS],  
         }
-        listaResultado.append('+-- https://instagram.com/{:-<37}+'.format(self.user['un'] + '/ '))
+        listaResultado.append('https://instagram.com/'+format(self.user['un']) + '/ ')
  
 
         # listaResultado.append("")
@@ -280,8 +280,8 @@ class InstaMeter:
         # print('|   {:<27}|{:^31}|'.format('counter', 'value'))
         # print('+{:-^30}+{:-^31}+'.format('', ''))
         for key, value in stats.items():
-            listaResultado.append('|   {:<27}: {:^31}|'.format(key, value))
-            listaResultado.append(" * ")
+            listaResultado.append('   {:<27}: {:^31}'.format(key, value))
+            #listaResultado.append(" * ")
 
             #print('|   {:<27}|{:^31}|'.format(key, value))
             worksheet.write(row, col,     key)
@@ -325,9 +325,9 @@ class InstaMeter:
     def __print_top_header(text):
        
         listaResultado = []
-        # listaResultado.append('+{:-^62}+'.format('', '')) 
-        # listaResultado.append('|{:^62}|'.format(text))
-        # listaResultado.append('+{:-^62}+'.format('', ''))
+        listaResultado.append('+{:-^62}+'.format('', '')) 
+        listaResultado.append('|{:^62}|'.format(text))
+        listaResultado.append('+{:-^62}+'.format('', ''))
 
         listaResultado.append(text)
  
@@ -339,7 +339,8 @@ class InstaMeter:
         for post in posts:
             print_text = 'https://instagram.com/p/{}/ - {} {}'.format(post['code'], post[key], text)
             
-            listaResultado.append(print_text)
+            listaResultado.append('|{:^62}|'.format(print_text))
+        listaResultado.append('+{:-^62}+'.format('', ''))
      
             #print('|{:^62}|'.format(print_text))
         #print('+{:-^62}+'.format('', ''))

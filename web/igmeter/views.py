@@ -19,9 +19,9 @@ def index(request):
 
     listaResultado = []
     listaResultado.append(im.print_account_statistic())
-    listaResultado.append(im.print_top_liked())
-    listaResultado.append(im.print_top_commented())
-    listaResultado.append(im.print_top_viewed())
+    # listaResultado.append(im.print_top_liked())
+    # listaResultado.append(im.print_top_commented())
+    # listaResultado.append(im.print_top_viewed())
     context = {'lista': listaResultado}
     return render(request, 'igmeter/index.html',context)
 # Create your views here.
