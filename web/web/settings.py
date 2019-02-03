@@ -14,7 +14,6 @@ import os
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-HTML_DIR = os.path.join(BASE_DIR , 'igmeter/htmls/')
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/2.1/howto/deployment/checklist/
@@ -120,8 +119,8 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 
-BASEURL = 'https://igmetereba.herokuapp.com'
-
+BASEURL = 'https://elenabravometer.herokuapp.com'
+APIS = {}
 # import django_heroku
 # django_heroku.settings(locals())# Try to import django-heroku depending on Travis or Heroku
 try:
