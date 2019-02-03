@@ -119,7 +119,7 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 
-BASEURL = 'https://elenabravometer.herokuapp.com'
+BASEURL = 'https://agile-woodland-31022.herokuapp.com'
 APIS = {}
 # import django_heroku
 # django_heroku.settings(locals())# Try to import django-heroku depending on Travis or Heroku
