@@ -24,7 +24,7 @@ SECRET_KEY = '_r(-83139hm=0vc2m9h%din%7l8vqx#7*d_&p2c4749ez9x1cd'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ["*"]
+ALLOWED_HOSTS = []
 
 
 # Application definition
@@ -80,32 +80,6 @@ DATABASES = {
     }
 }
 
-
-
-# DATABASES = {
-#     'default': {
-#         'ENGINE': 'django.db.backends.postgresql_psycopg2',
-#         'NAME': 'djangogirls',
-#         'USER': 'name',
-#         'PASSWORD': '',
-#         'HOST': 'localhost',
-#         'PORT': '',
-#     }
-# }
-
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': 'djangogirls',
-        'USER': 'name',
-        'PASSWORD': '',
-        'HOST': 'localhost',
-        'PORT': '',
-    }
-}
-
-db_from_env = dj_database_url.config(conn_max_age=500)
-DATABASES['default'].update(db_from_env)
 
 # Password validation
 # https://docs.djangoproject.com/en/2.1/ref/settings/#auth-password-validators
