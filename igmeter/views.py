@@ -1,7 +1,7 @@
 from django.shortcuts import render
 from django.http import HttpResponse, HttpResponseRedirect
 from random import shuffle
-import os
+import os, sys
 from .models import *
 from .forms import *
 import sqlite3
@@ -9,6 +9,11 @@ from difflib import SequenceMatcher
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 CSV_FOLDER = os.path.join(BASE_DIR)
 from igmeter.InstaMeter import *
+from django.http.response import StreamingHttpResponse
+from io import StringIO as StringIO 
+from django.http import HttpResponse
+
+from xlsxwriter.workbook import Workbook
 
 
 # Just reads the results out of the dictionary. No real logic here.
@@ -24,7 +29,20 @@ def index(request):
     return render(request, 'igmeter/index.html',context)
 # Create your views here.
 
+def download_csv(request):
+    output = StringIO()
+    book = Workbook(output)
+    book =  xlsxwriter.Workbook("Statistics_of_@elenabravoarche.xlsx")
+    # book = xlsxwriter.Workbook('Statistics_of_@'+format(self.user['un'])+'.xlsx')
+    book.close()
+    book = Workbook(output)
 
+    # construct response
+    output.seek(0)
+    response = HttpResponse(output.read(), content_type="application/vnd.openxmlformats-officedocument.spreadsheetml.sheet")
+    response['Content-Disposition'] = "attachment; filename=elenabravoarche.xlsx"
+
+    return response
 # def noticias(request):
     
 #     listaNoticias = Noticias.objects.all()

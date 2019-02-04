@@ -10,5 +10,6 @@ urlpatterns = [
     # path('busqueda/', views.busqueda, name='busqueda'),
     # path('recomienda/', views.recomendadas, name='recomienda'),
     # path('recomiendaId/<int:movie_id>/', views.recomendadasId, name="recomiendaId")
+    path('download_my_csv', views.download_csv),
 
 ]
