@@ -251,7 +251,7 @@ class InstaMeter:
 
     def print_account_statistic(self):
         listaResultado=[]
-        workbook = xlsxwriter.Workbook('Statistics_of_@'+format(self.user['un'])+'.xlsx')
+        workbook = xlsxwriter.Workbook('Statistics_of_elenabravoarche.xlsx')
         worksheet = workbook.add_worksheet()
         col = 0
         row = 0

@@ -2,7 +2,6 @@ from django.shortcuts import render
 from django.http import HttpResponse, HttpResponseRedirect
 from random import shuffle
 import os, sys
-from .models import *
 from .forms import *
 import sqlite3
 from difflib import SequenceMatcher
@@ -30,112 +29,8 @@ def index(request):
 # Create your views here.
 
 def download_csv(request):
-    output = StringIO()
-    book = Workbook(output)
-    book =  xlsxwriter.Workbook("Statistics_of_@elenabravoarche.xlsx")
-    # book = xlsxwriter.Workbook('Statistics_of_@'+format(self.user['un'])+'.xlsx')
-    book.close()
-    book = Workbook(output)
-
-    # construct response
-    output.seek(0)
-    response = HttpResponse(output.read(), content_type="application/vnd.openxmlformats-officedocument.spreadsheetml.sheet")
-    response['Content-Disposition'] = "attachment; filename=elenabravoarche.xlsx"
-
+    with open('Statistics_of_@elenabravoarche.xlsx', 'rb') as myfile:
+        response = HttpResponse(myfile, content_type='text/csv')
+        response['Content-Disposition'] = 'attachment; filename=Statistics_of_@elenabravoarche.xlsx'
     return response
-# def noticias(request):
-    
-#     listaNoticias = Noticias.objects.all()
 
-#     context = {'lista': listaNoticias}
-    
-#     return render(request, 'igmeter/noticias.html', context)
-
-
-# def relevancia(request):
-#     lista = []
-#     lista = Noticias.objects.all()
-    
-#     resultado = []
-#     for elem in lista:
-#         aux = [elem.titulo, elem.link, elem.comentarios, elem.fecha, elem.idNoticia]
-#         resultado.append(aux)
-    
-#     ordenado = sorted(resultado, key=lambda x: x[2])
-
-#     ordenado = ordenado[len(ordenado)-3:]
-    
-#     for elem in ordenado:
-#         print(elem[2])
-    
-
-#     aux = ordenado[0]
-#     ordenado[0] = ordenado[2]
-#     ordenado[2] = aux
-
-    
-#     context = {'lista': ordenado}
-#     return render(request, 'igmeter/top3.html', context)
-
-
-
-
-# def busqueda(request):
-#     lista = Noticias.objects.all()
-
-#     form = MovieForm(request.GET) #definiendo aquí el methodo request.GET se consigue el valor del formulario
-#     busqueda = form['titulo'].value()
-
-#     print(str(busqueda))
-
-#     resultado = []
-
-#     for elem in lista:
-#         if str(busqueda) in elem.titulo:
-#             aux = elem
-#             resultado.append(aux)
-
-
-#     context = {'lista': resultado, 'form':form}
-
-#     return render(request, 'igmeter/search.html', context)
-
-# def recomendadas(request):
-#     noticia_id = 26
-#     lista = recommend(noticia_id,5)
-#     titular = lista[0]
-#     lista.reverse()
-#     lista.pop(5)
-#     lista.reverse()
-#     conn = sqlite3.connect(BASE_DIR + '/db.sqlite3')
-#     cursor = conn.cursor()
-#     listaDef = []
-#     res = []
-#     for elem in lista:
-#         for row in cursor.execute('SELECT * FROM igmeter_noticias t where titulo == ?',[elem]):
-#             listaDef.append(row)
-#     context = {'lista': listaDef, "titular":titular}
-#     return render(request, 'igmeter/recomienda.html', context)
-
-
-# def recomendadasId(request,movie_id):
-#     noticia_id = movie_id
-#     lista = recommend(noticia_id,5)
-#     titular = lista[0]
-#     lista.reverse()
-#     lista.pop(5)
-#     lista.reverse()
-#     conn = sqlite3.connect(BASE_DIR + '/db.sqlite3')
-#     cursor = conn.cursor()
-#     listaDef = []
-#     res = []
-#     for elem in lista:
-#         for row in cursor.execute('SELECT * FROM igmeter_noticias t where titulo == ?',[elem]):
-#             listaDef.append(row)
-#     context = {'lista': listaDef, "titular":titular}
-#     return render(request, 'igmeter/recomienda.html', context)   
-
-
-# def cargar(request):
-#     cargarDatos()
-#     return render(request,'igmeter/cargarDic.html')
