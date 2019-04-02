@@ -29,8 +29,8 @@ def index(request):
 # Create your views here.
 
 def download_csv(request):
-    with open('Statistics_of_@elenabravoarche.xlsx', 'rb') as myfile:
+    with open('Statistics_of_elenabravoarche.xlsx', 'rb') as myfile:
         response = HttpResponse(myfile, content_type='text/csv')
-        response['Content-Disposition'] = 'attachment; filename=Statistics_of_@elenabravoarche.xlsx'
+        response['Content-Disposition'] = 'attachment; filename=Statistics_of_elenabravoarche.xlsx'
     return response
 
