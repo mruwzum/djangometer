@@ -1,11 +1,11 @@
-Django==2.0
-djangorestframework==3.7.7
+django>=2.0.11
+djangorestframework>=3.9.1
 django-cors-headers==2.1.0
 django-filter==1.1.0
 lxml==4.2.5
 numpy==1.15.2
 django-heroku
 gunicorn
-urllib3==1.22
+urllib3>=1.24.2
 XlsxWriter==1.1.2
 requests==2.21.0
