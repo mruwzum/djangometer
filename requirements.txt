@@ -2,7 +2,7 @@ django>=2.0.11
 djangorestframework>=3.9.1
 django-cors-headers==2.1.0
 django-filter==1.1.0
-lxml==4.2.5
+lxml==4.6.3
 numpy==1.15.2
 django-heroku
 gunicorn
